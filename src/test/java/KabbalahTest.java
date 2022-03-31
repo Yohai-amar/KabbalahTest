@@ -33,4 +33,18 @@ public class KabbalahTest {
         Assert.assertEquals(newUrl,Help.LATESTLESSONPAGE);
         driver.quit();
     }
+
+    @Test
+    public void openingWisdomTab(){
+        WebDriver driver = new ChromeDriver();
+        driver.get(Help.KABBALAHMEDIASITE);
+        driver.manage().window().maximize();
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+        WebElement openingWisdomTab = wait.
+                until(ExpectedConditions.presenceOfElementLocated(By.partialLinkText(Help.OPENINGWISDOMPICTXTLINK)));
+        openingWisdomTab.click();
+        String newUrl = driver.getCurrentUrl();
+        Assert.assertEquals(newUrl,Help.OPENINGWISDOMPAGE);
+        driver.quit();
+    }
 }
